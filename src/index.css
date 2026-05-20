@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy font-body text-white antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-navy;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-gold-dim;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 py-20 sm:px-6 lg:px-8 lg:py-28;
+  }
+
+  .nav-link-underline {
+    @apply relative inline-block;
+  }
+
+  .nav-link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-0.5 w-0 bg-gold transition-all duration-300;
+  }
+
+  .nav-link-underline:hover::after,
+  .nav-link-underline.active::after {
+    @apply w-full;
+  }
+
+  .shimmer-badge {
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(240, 204, 85, 0.25) 50%, rgba(212, 175, 55, 0.1) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+
+  .rotating-border {
+    position: relative;
+    border-radius: 1rem;
+    padding: 3px;
+    overflow: hidden;
+  }
+
+  .rotating-border::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      #d4af37,
+      #f0cc55,
+      #d4af37,
+      transparent
+    );
+    animation: border-spin 4s linear infinite;
+  }
+
+  .rotating-border-inner {
+    @apply relative z-10 overflow-hidden rounded-[calc(1rem-3px)] bg-navy-light;
+  }
+}
