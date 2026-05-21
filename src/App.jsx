@@ -7,6 +7,7 @@ import Projects from './sections/Projects'
 import TycoonVision from './sections/TycoonVision'
 import Industries from './sections/Industries'
 import Certifications from './sections/Certifications'
+import Media from './sections/Media'
 import About from './sections/About'
 import Testimonials from './sections/Testimonials'
 import Contact from './sections/Contact'
@@ -23,6 +24,7 @@ export default function App() {
         <TycoonVision />
         <Industries />
         <Certifications />
+        <Media />
         <About />
         <Testimonials />
         <Contact />
