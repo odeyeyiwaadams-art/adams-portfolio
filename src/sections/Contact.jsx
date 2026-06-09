@@ -1,11 +1,9 @@
-import { useState } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { MapPin, Mail } from 'lucide-react'
-import { FaWhatsapp, FaLinkedin } from 'react-icons/fa'
-import { HiMail } from 'react-icons/hi'
-import SectionHeading from '../components/SectionHeading'
-import GlowButton from '../components/GlowButton'
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { MapPin, Mail } from 'lucide-react';
+import { FaWhatsapp, FaLinkedin } from 'react-icons/fa';
+import { HiMail } from 'react-icons/hi';
+import SectionHeading from '../components/SectionHeading';
 
 const subjects = [
   'Digital Marketing Consulting',
@@ -13,36 +11,29 @@ const subjects = [
   'Career Consulting',
   'Partnership',
   'Other',
-]
+];
 
 export default function Contact() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    const form = e.target
-    const data = new FormData(form)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      })
-      if (res.ok) {
-        setSubmitted(true)
-        form.reset()
-      }
-    } catch {
-      setSubmitted(true)
-    } finally {
-      setLoading(false)
-    }
-  }
+    const form = e.target;
+    const { name, email, subject, message } = form;
+
+    const text = `New Portfolio Message\n\nName: ${name.value}\nEmail: ${email.value}\nSubject: ${subject.value}\nMessage: ${message.value}`;
+    const whatsappUrl = `https://wa.me/2349127811233?text=${encodeURIComponent(text)}`;
+
+    window.open(whatsappUrl, '_blank');
+    setLoading(false);
+    setSubmitted(true);
+    form.reset();
+  };
 
   return (
     <section id="contact" className="section-padding bg-navy-light/30">
@@ -59,11 +50,17 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="grid gap-12 lg:grid-cols-2 lg:gap-16"
         >
+          {/* Left column */}
           <div className="space-y-8">
-            <GlowButton href="https://wa.me/2349127811233" size="lg">
+            <a
+              href="https://wa.me/2349127811233"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full border border-gold bg-gold/10 px-6 py-3 text-gold font-semibold transition-all hover:bg-gold/20 hover:shadow-glow"
+            >
               <FaWhatsapp size={22} />
               Chat on WhatsApp
-            </GlowButton>
+            </a>
 
             <div className="space-y-4">
               <a
@@ -73,6 +70,7 @@ export default function Contact() {
                 <Mail size={20} className="text-gold" />
                 odeyeyiwaadams@gmail.com
               </a>
+              
               <a
                 href="https://www.linkedin.com/in/odeyeyiwa-adams-037136260"
                 target="_blank"
@@ -82,9 +80,10 @@ export default function Contact() {
                 <FaLinkedin size={20} className="text-gold" />
                 LinkedIn Profile
               </a>
+              
               <p className="flex items-center gap-3 text-gray-soft">
                 <MapPin size={20} className="text-gold shrink-0" />
-                Lagos & Ibadan, Nigeria
+                Lagos &amp; Ibadan, Nigeria
               </p>
             </div>
 
@@ -102,6 +101,7 @@ export default function Contact() {
               >
                 <FaWhatsapp size={22} />
               </a>
+              
               <a
                 href="https://www.linkedin.com/in/odeyeyiwa-adams-037136260"
                 target="_blank"
@@ -111,6 +111,7 @@ export default function Contact() {
               >
                 <FaLinkedin size={22} />
               </a>
+              
               <a
                 href="mailto:odeyeyiwaadams@gmail.com"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 text-gold transition-all hover:bg-gold/10 hover:shadow-glow"
@@ -121,6 +122,7 @@ export default function Contact() {
             </div>
           </div>
 
+          {/* Right column - Form */}
           <form
             onSubmit={handleSubmit}
             className="rounded-2xl border border-gold/10 bg-navy-light p-8"
@@ -140,63 +142,35 @@ export default function Contact() {
               <>
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="name" className="mb-2 block text-sm text-gray-soft">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      className="w-full rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold"
-                    />
+                    <label htmlFor="name" className="mb-2 block text-sm text-gray-soft">Name</label>
+                    <input id="name" name="name" type="text" required className="w-full rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold" />
                   </div>
                   <div>
-                    <label htmlFor="email" className="mb-2 block text-sm text-gray-soft">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      className="w-full rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold"
-                    />
+                    <label htmlFor="email" className="mb-2 block text-sm text-gray-soft">Email</label>
+                    <input id="email" name="email" type="email" required className="w-full rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold" />
                   </div>
                 </div>
+
                 <div className="mt-6">
-                  <label htmlFor="subject" className="mb-2 block text-sm text-gray-soft">
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    className="w-full rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold"
-                  >
-                    {subjects.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
+                  <label htmlFor="subject" className="mb-2 block text-sm text-gray-soft">Subject</label>
+                  <select id="subject" name="subject" required className="w-full rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold">
+                    {subjects.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
+
                 <div className="mt-6">
-                  <label htmlFor="message" className="mb-2 block text-sm text-gray-soft">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="w-full resize-none rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold"
-                  />
+                  <label htmlFor="message" className="mb-2 block text-sm text-gray-soft">Message</label>
+                  <textarea id="message" name="message" rows={5} required className="w-full resize-none rounded-lg border border-gold/20 bg-navy px-4 py-3 text-white outline-none transition-colors focus:border-gold" />
                 </div>
+
                 <div className="mt-8">
-                  <GlowButton type="submit" size="lg" className="w-full sm:w-auto">
-                    {loading ? 'Sending...' : 'Send Message'}
-                  </GlowButton>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-gold bg-gold/10 px-8 py-3 font-semibold text-gold transition-all hover:bg-gold/20 hover:shadow-glow disabled:opacity-50 sm:w-auto"
+                  >
+                    {loading ? 'Opening WhatsApp...' : 'Send Message'}
+                  </button>
                 </div>
               </>
             )}
@@ -204,5 +178,5 @@ export default function Contact() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

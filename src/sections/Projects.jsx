@@ -7,24 +7,33 @@ const filters = ['All', 'Apps', 'Marketing', 'Consulting']
 
 const projects = [
   {
+    title: 'Dazzling Stepper',
+    status: 'Live',
+    type: 'App',
+    category: 'Apps',
+    description:
+      'E-commerce landing page for selling the Dazzling Stair Stepper fitness product. Features dynamic pricing, WhatsApp order redirect, and email notifications.',
+    stack: ['MongoDB', 'Express', 'React', 'Node.js', 'Nodemailer'],
+    live: 'https://dazzling-stepper.vercel.app',
+  },
+  {
     title: 'Dazzling Prospector',
     status: 'Live',
     type: 'App',
     category: 'Apps',
     description:
-      'Full-stack CRM for a luxury home goods brand. Lead management, outreach tracking, Kanban pipeline, commission calculation and CSV export.',
+      'Full-stack CRM that surgically pulls prospects from the web for the Dazzling Features brand. Lead management, outreach tracking, Kanban pipeline, and CSV export.',
     stack: ['MongoDB', 'Express', 'React', 'Node.js'],
-    github: '#',
-    live: '#',
+    live: 'https://dazzling-prospector.vercel.app',
   },
   {
     title: 'WorkEasy',
-    status: 'Live',
+    status: 'In Development',
     type: 'App',
     category: 'Apps',
     description:
-      'Lightweight sales tracking app built and deployed for Dazzling Features to manage daily sales activity.',
-    stack: ['HTML', 'CSS', 'JavaScript', 'Netlify'],
+      'A two-sided marketplace app — helping people hire trusted local artisans while giving artisans a platform to find gigs and grow their business.',
+    stack: ['MongoDB', 'Express', 'React', 'Node.js'],
     live: '#',
   },
   {
@@ -34,7 +43,7 @@ const projects = [
     category: 'Apps',
     description:
       'RegTech SaaS helping Nigerian POS owners calculate profit, compute tax under Nigerian law, and pay via Remita. Under Tycoon Group Ltd.',
-    stack: ['MongoDB', 'Express', 'React', 'Paystack'],
+    stack: ['MongoDB', 'Express', 'React'],
   },
   {
     title: 'Trifone Nigeria',
@@ -42,7 +51,7 @@ const projects = [
     type: 'Marketing',
     category: 'Marketing',
     description:
-      'Social media content strategy, AI product visuals, WhatsApp reseller group setup, and digital growth for a Nigerian consumer electronics brand.',
+      'Social media content strategy, product visuals, WhatsApp reseller group setup, and digital growth for a Nigerian consumer electronics brand.',
     stack: ['Social Media', 'AI Visuals', 'WhatsApp Marketing'],
   },
   {
@@ -51,17 +60,17 @@ const projects = [
     type: 'Marketing',
     category: 'Marketing',
     description:
-      "School pitches and digital marketing for Nigeria's leading educational digital product company across Ibadan and Ikeja.",
+      "School pitches and digital marketing for Nigeria's leading educational digital product company across Ibadan.",
     stack: ['EdTech', 'B2B Sales', 'Digital Marketing'],
   },
   {
     title: 'Celeb Alagbafo',
-    status: 'Launching',
-    type: 'Marketing',
-    category: 'Marketing',
-    description:
-      'Media and entertainment brand co-founded with his wife. Currently in production phase.',
-    stack: ['Media', 'Entertainment', 'Co-founder'],
+status: 'Launched',
+type: 'Laundry',
+category: 'Consumer Service',
+description:
+  'Co-founded a premium laundry service in Ibadan. Driving brand strategy, tiered pricing, and B2B hotel acquisition.',
+stack: ['Brand Strategy', 'B2B Sales', 'Co-founder'],
   },
 ]
 
